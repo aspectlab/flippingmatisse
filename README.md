@@ -12,11 +12,11 @@ Steps to get going:
     README.md            -- this file<br>
     saved_model.hdf5     -- provided pre-trained model<br>
 
-2. If you were provided the 860 *greyscale* Matisse images, put them in a folder called ./data/matisse_grey/, and you're done with this step.  Otherwise, if you were provided the raw color Matisse TIF images, put those 860 files in the folder ./data/matisse/.  Then, crop and convert them to greyscale with the following commands (requires ImageMagick) --
-mkdir data/matisse_grey/
-cd data/matisse/
-mogrify -format png -resize 1836x1536 -colorspace gray -crop 1024x1024+406+256 -define png:bit-depth=8 *.tif
-mv *.png ../matisse_grey/
+2. If you were provided the 860 *greyscale* Matisse images, put them in a folder called ./data/matisse_grey/, and you're done with this step.  Otherwise, if you were provided the raw color Matisse TIF images, put those 860 files in a folder called ./data/matisse/.  Then, crop and convert them to greyscale with the following commands (requires ImageMagick) --<br>
+mkdir data/matisse_grey/<br>
+cd data/matisse/<br>
+mogrify -format png -resize 1836x1536 -colorspace gray -crop 1024x1024+406+256 -define png:bit-depth=8 *.tif<br>
+mv *.png ../matisse_grey/<br>
 
 3. Run create_datafiles.py to generate matisse.npz and matisse_aug_valid.npz.  You may delete the directories "matisse_tiled" and "matisse_aug_valid" which are created as part of this process.
 
