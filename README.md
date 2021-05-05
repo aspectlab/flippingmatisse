@@ -20,13 +20,13 @@ This code repository contains experimental code used to determine possible "flip
 3. Run create_datafiles.py to generate `matisse.npz` and `matisse_aug_valid.npz`.  You may optionally delete the directories `data/matisse_tiled` and `data/matisse_aug_valid` which are created as part of this process.
 
 ## Compute feature vectors and distance matrix
-This step is done using Python code which makes use of TensorFlow.  You can simply run `flipping.ipynb` (or flipping.py) which will generate feature vectors and a distance matrix based on a pre-trained model.  The results are stored in Matlab file called `output.mat`.  To train your own model instead, adjust the flag `TRAIN_MODE = True` at the top of the Python code. 
+This step is done using Python code which makes use of TensorFlow.  You can simply run `flipping.ipynb` (or flipping.py) which will generate feature vectors and a distance matrix based on a pre-trained model.  The results are stored in a Matlab file called `output.mat`.  To train your own model instead, adjust the flag `TRAIN_MODE = True` at the top of the Python code. 
 
 ## Use distance matrix to compute suggested flips, and generate original/flipped mosaics.
 This step is done using Matlab.  Assuming you have followed the prior step and generated the distance matrix, you can generate a list of suggested flips via the command:<br>
 `[uniqueEds, editions, flip] = find_flips(D, fnames);`<br>
 which stores the suggested flips in the `flips` variable.  Then, you can batch generate image mosiacs comparing original/flipped versions by typing:<br>
 `mkdir mosaics`<br>
-`tile_shuffle('data/matisse_grey/', 'mosiacs', fnames, uniqueEds, editions, flip)`
+`tile_shuffle('data/matisse_grey/', 'mosiacs/', fnames, uniqueEds, editions, flip)`
 
 Authors: L. Lackey, A. Grootveld, K. Aguilar, A.G. Klein
