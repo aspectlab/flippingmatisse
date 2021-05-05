@@ -27,7 +27,7 @@ This step is done using Matlab.  Assuming you have followed the prior step and g
 `load output.mat`<br>
 `[uniqueEds, editions, flip] = find_flips(D, fnames);`<br>
 `display_flips(flip,fnames)`<br>
-which stores the suggested flips in the `flips` variable.  Then, you can batch generate image mosiacs comparing original/flipped versions by typing:<br>
+Then, you can batch generate image mosiacs comparing original/flipped versions by typing:<br>
 `mkdir mosaics`<br>
 `tile_shuffle('data/matisse_grey/', 'mosiacs/', fnames, uniqueEds, editions, flip)`
 
