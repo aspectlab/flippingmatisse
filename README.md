@@ -24,10 +24,11 @@ This code repository contains experimental code used to determine possible "flip
 This step is done using Python code which makes use of TensorFlow.  You can simply run `flipping.ipynb` (or flipping.py) which will generate feature vectors and a distance matrix based on a pre-trained model.  The results are stored in a Matlab file called `output.mat`.  To train your own model instead, adjust the flag `TRAIN_MODE = True` at the top of the Python code. 
 
 ## Use distance matrix to compute suggested flips, and generate original/flipped mosaics (Matlab)
-This step is done using Matlab.  Assuming you have followed the prior step and generated the distance matrix, you can generate a list of suggested flips via the commands:<br>
+This step is done using Matlab.  Assuming you have followed the prior step and generated the distance matrix, a list of suggested flips can be generated via the commands:<br>
 `load output.mat`<br>
 `[uniqueEds, editions, flip] = find_flips(D, fnames);`<br>
 `display_flips(flip,fnames)`<br>
+
 Then, you can batch generate image mosiacs comparing original/flipped versions by typing:<br>
 `mkdir mosaics`<br>
 `tile_shuffle('data/matisse_grey/', 'mosiacs/', fnames, uniqueEds, editions, flip)`
