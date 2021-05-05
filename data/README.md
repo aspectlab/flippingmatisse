@@ -1,0 +1,1 @@
+Provided greyscale PNG image files should go here in a folder called matisse_grey.  If color images were provided, see main README for instructions on creating greyscale images.
