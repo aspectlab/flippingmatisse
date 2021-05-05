@@ -12,7 +12,7 @@ Steps to get going:
     README.md            -- this file<br>
     saved_model.hdf5     -- provided pre-trained model<br>
 
-2. If you were provided the 860 *greyscale* Matisse image, put them in a folder called ./data/matisse_grey, and you're done with this step.  Otherwise, if you were provided the raw color Matisse TIF images, put those 860 files in the folder ./data/matisse/.  Then, crop and convert them to greyscale with the following commands (requires ImageMagick) --
+2. If you were provided the 860 *greyscale* Matisse images, put them in a folder called ./data/matisse_grey/, and you're done with this step.  Otherwise, if you were provided the raw color Matisse TIF images, put those 860 files in the folder ./data/matisse/.  Then, crop and convert them to greyscale with the following commands (requires ImageMagick) --
 mkdir data/matisse_grey/
 cd data/matisse/
 mogrify -format png -resize 1836x1536 -colorspace gray -crop 1024x1024+406+256 -define png:bit-depth=8 *.tif
