@@ -6,6 +6,7 @@ This code repository contains experimental code used to determine possible "flip
 1. First, clone this git repository, which should give you the following:<br>
     `checkpoints/`         -- empty directory, stores checkpoints during training<br>
     `data/`                -- empty directory, place to put the image data<br>
+    `figs/`                -- empty directory, stores loss figures generated during training<br>
     `create_datafiles.py`  -- Python script to generate pre-processed data files from raw images<br>
     `flipping.ipynb`       -- Main script for generating feature vectors (Jupyter version)<br>
     `flipping.py`          -- Main script for generating feature vectors (Python version)<br>
