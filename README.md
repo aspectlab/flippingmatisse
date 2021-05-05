@@ -7,7 +7,8 @@ This code repository contains experimental code used to determine possible "flip
     `checkpoints/`         -- empty directory, stores checkpoints during training<br>
     `data/`                -- empty directory, place to put the image data<br>
     `create_datafiles.py`  -- Python script to generate pre-processed data files from raw images<br>
-    `flipping.ipynb`       -- Main script<br>
+    `flipping.ipynb`       -- Main script for generating feature vectors (Jupyter version)<br>
+    `flipping.py`          -- Main script for generating feature vectors (Python version)<br>
     `README.md`            -- this file<br>
     `saved_model.hdf5`     -- provided pre-trained model<br>
 
