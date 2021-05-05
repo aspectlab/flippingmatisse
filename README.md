@@ -26,6 +26,7 @@ This step is done using Python code which makes use of TensorFlow.  You can simp
 This step is done using Matlab.  Assuming you have followed the prior step and generated the distance matrix, you can generate a list of suggested flips via the commands:<br>
 `load output.mat`<br>
 `[uniqueEds, editions, flip] = find_flips(D, fnames);`<br>
+`display_flips(flip,fnames)`<br>
 which stores the suggested flips in the `flips` variable.  Then, you can batch generate image mosiacs comparing original/flipped versions by typing:<br>
 `mkdir mosaics`<br>
 `tile_shuffle('data/matisse_grey/', 'mosiacs/', fnames, uniqueEds, editions, flip)`
