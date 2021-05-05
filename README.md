@@ -7,7 +7,7 @@ Steps to get going:
 1. First, clone this git repository, which should give you the following:<br>
     checkpoints/         -- empty directory, stores checkpoints during training<br>
     data/                -- empty directory, place to put the image data<br>
-    create_datafiles.py  -- Python script to generate pre-processed images from raw images, stored as matisse.npz and matisse_aug_valid.npz<br>
+    create_datafiles.py  -- Python script to generate pre-processed data files from raw images<br>
     flipping.ipynb       -- Main script<br>
     README.md            -- this file<br>
     saved_model.hdf5     -- provided pre-trained model<br>
