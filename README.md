@@ -32,7 +32,7 @@ This step is done using Matlab.  Assuming you have followed the prior step and g
 
 Then, you can batch generate image mosiacs comparing original/flipped versions by typing:<br>
 `mkdir mosaics`<br>
-`tile_shuffle('data/matisse_grey/', 'mosaics/', fnames, uniqueEds, editions, flip)`<br>
+`make_mosaics('data/matisse_grey/', 'mosaics/', fnames, uniqueEds, editions, flip)`<br>
 and the results will be stored as PNG images in the `mosaics/` directory.  Also, the input directory `data/matisse_grey/` can be replaced by a different directory containing color PNG image files.
 
 Authors: L. Lackey, A. Grootveld, K. Aguilar, A.G. Klein
