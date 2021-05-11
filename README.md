@@ -3,15 +3,7 @@
 This code repository contains experimental code used to determine possible "flips" in the Matisse lithograph dataset.  It does *not* contain the required image data referenced in step 2.  
 
 ## Initial setup
-1. First, clone this git repository, which should give you the following:<br>
-    `checkpoints/`         -- empty directory, stores checkpoints during training<br>
-    `data/`                -- empty directory, place to put the image data<br>
-    `figs/`                -- empty directory, stores loss figures generated during training<br>
-    `create_datafiles.py`  -- Python script to generate pre-processed data files from raw images<br>
-    `flipping.ipynb`       -- Main script for generating feature vectors (Jupyter version)<br>
-    `flipping.py`          -- Main script for generating feature vectors (Python version)<br>
-    `README.md`            -- this file<br>
-    `saved_model.hdf5`     -- provided pre-trained model<br>
+1. First, clone this git repository.
 
 2. If you were provided the 860 *greyscale* Matisse images, put them in a folder called `./data/matisse_grey/`, and you're done with this step.  Otherwise, if you were provided the raw *color* Matisse TIF images, put those 860 files in a folder called `./data/matisse/`.  Then, crop and convert them to greyscale with the following commands (requires ImageMagick) --<br>
 `mkdir data/matisse_grey/`<br>
@@ -25,7 +17,7 @@ This code repository contains experimental code used to determine possible "flip
 This step is done using Python code which makes use of TensorFlow.  You can simply run `flipping.ipynb` (or flipping.py) which will generate feature vectors and a distance matrix based on a pre-trained model.  The results are stored in a Matlab file called `output.mat`.  To train your own model instead, adjust the flag `TRAIN_MODE = True` at the top of the Python code. 
 
 ## Use distance matrix to compute suggested flips, and generate original/flipped mosaics (Matlab)
-This step is done using Matlab.  Assuming you have followed the prior step and generated the distance matrix, a list of suggested flips can be generated via the commands:<br>
+This step is done using Matlab.  Assuming you have followed the prior step and generated the distance matrix (or you may use the provided `output.mat`), a list of suggested flips can be generated via the commands:<br>
 `load output.mat`<br>
 `[uniqueEds, editions, flip] = find_flips(D, fnames);`<br>
 `display_flips(flip,fnames)`<br>
