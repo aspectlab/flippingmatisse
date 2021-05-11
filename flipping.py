@@ -29,13 +29,12 @@ from IPython.display import clear_output
 TRAIN_MODE = False                 # set to True if we need to train, set to False to load pre-trained model
 TRAINDATA_FILE = 'data/matisse_aug_valid.npz'  # file containing training and validation data set
 TESTDATA_FILE =  'data/matisse.npz'   # file containing test data set
-MODEL_FILENAME = 'saved_model'     # file to load pre-trained model (if TRAIN_MODE=False)
+MODEL_FILENAME = 'saved_model3'     # file to load pre-trained model (if TRAIN_MODE=False)
 EMB_SIZE = 16                      # num elements in feature vector / embedding output of NN
 BATCH_SIZE = 512                   # size of each batch
-EPOCHS = 4000                       # number of epochs to run
+EPOCHS = 400                       # number of epochs to run
 ALPHA = 0.5                        # triplet loss parameter
 L2NORM = True                      # indicates whether embeddings are L2 normalized to hypersphere
-PATIENCE = 1000                      # training stop if this number of epochs go by without improvement
 JUPYTER = False                    # true for live loss plotting (.ipynb), false to save plots to files (.py)
 
 
@@ -187,7 +186,7 @@ class Plotter(tf.keras.callbacks.Callback):
         plt.semilogy(np.arange(1, epoch+2), self.val_mssr,'o-')
         plt.semilogy(np.arange(1, epoch+2), self.val_loss,'o-')
         plt.semilogy(np.arange(1, epoch+2), self.loss,'o-')
-        plt.grid()
+        plt.grid(which='both')
         plt.xlabel('epoch')
         plt.ylabel('loss')
         plt.title('loss at each epoch')
@@ -246,7 +245,13 @@ with strategy.scope():
 # In[ ]:
 
 
-#net.load_weights('checkpoints/weights-0120.hdf5')
+#net.load_weights('checkpoints/weights-0253.hdf5')
+#embedding_model.load_weights(MODEL_FILENAME+'.hdf5')
+#embedding_model = tf.keras.models.load_model('saved_model')
+#embedding_model.save_weights(filepath='saved_model3.hdf5')
+
+#net.load_weights('saved_model3.hdf5')
+#embedding_model.save_weights(filepath='saved_model3x.hdf5')
 
 
 # ## Train network, or load pre-trained model
@@ -267,8 +272,7 @@ if TRAIN_MODE:
         epochs=EPOCHS,
         callbacks=[Metrics((x_valid, y_valid),valid_tiles_per_image,embedding_model), 
                    Plotter(),
-                   tf.keras.callbacks.ModelCheckpoint(filepath='checkpoints/weights-{epoch:04d}.hdf5', save_weights_only=True, save_best_only=True, monitor='val_mssr'),
-                   tf.keras.callbacks.EarlyStopping(monitor="val_mssr", patience=PATIENCE, mode="min")],
+                   tf.keras.callbacks.ModelCheckpoint(filepath='checkpoints/weights-{epoch:04d}.hdf5', save_weights_only=True, save_best_only=True, monitor='val_loss')],
         steps_per_epoch=steps_per_epoch,
         validation_data=validation_data, validation_steps=validation_steps
     )
@@ -281,7 +285,7 @@ else:
 # In[ ]:
 
 
-#embedding_model.save_weights(filepath='saved_model.hdf5')
+#embedding_model.save_weights(filepath='saved_model2.hdf5')
 
 
 # ## Compute training set tile features on final/trained network. Use tile features to compute training set image distances using two methods. Report mean self-similarity rank on training set (lower is better)

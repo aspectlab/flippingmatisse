@@ -1,1 +1,1 @@
-Provided greyscale PNG image files should go here in a folder called matisse_grey.  If color images were provided, see main README for instructions on creating greyscale images.
+Provided greyscale PNG image files should go here in a folder called matisse_grey.  Following the setup instructions, running "create_dataset.py" will create matisse_aug_valid.npz and matisse.npz.  If color images were provided, see main README for instructions on creating greyscale images.
