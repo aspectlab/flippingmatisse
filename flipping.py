@@ -4,7 +4,8 @@
 # # Triplet Network for Identifying "Flips" in Matisse dataset
 # 
 
-# **version 0.1** -- 05/04/2021 -- AGK -- initial version
+# **version 0.1** -- 05/04/2021 -- AGK -- initial version<br>
+# **version 0.2** -- 05/11/2021 -- AGK -- scaled features to 0.5 radius hypersphere
 
 # ## Import necessary libraries
 
@@ -29,7 +30,7 @@ from IPython.display import clear_output
 TRAIN_MODE = False                 # set to True if we need to train, set to False to load pre-trained model
 TRAINDATA_FILE = 'data/matisse_aug_valid.npz'  # file containing training and validation data set
 TESTDATA_FILE =  'data/matisse.npz'   # file containing test data set
-MODEL_FILENAME = 'saved_model3'     # file to load pre-trained model (if TRAIN_MODE=False)
+MODEL_FILENAME = 'fm_model'        # file to load pre-trained model (if TRAIN_MODE=False)
 EMB_SIZE = 16                      # num elements in feature vector / embedding output of NN
 BATCH_SIZE = 512                   # size of each batch
 EPOCHS = 400                       # number of epochs to run
@@ -101,7 +102,7 @@ def compute_image_distances(embs, tiles_per_image):
     # calculate per-image distances (approach #2) using euclidean difference of centroids
     centroids = np.zeros((num_classes, EMB_SIZE))
     for i in range(num_classes):
-        centroids[i]=embs[range(i*tiles_per_image, (i+1)*tiles_per_image),:].sum(axis=0)
+        centroids[i]=embs[range(i*tiles_per_image, (i+1)*tiles_per_image),:].mean(axis=0)/2
     img_distances2 = euclidean_distances(centroids)
     
     return [img_distances1, img_distances2, centroids]
@@ -245,13 +246,7 @@ with strategy.scope():
 # In[ ]:
 
 
-#net.load_weights('checkpoints/weights-0253.hdf5')
-#embedding_model.load_weights(MODEL_FILENAME+'.hdf5')
-#embedding_model = tf.keras.models.load_model('saved_model')
-#embedding_model.save_weights(filepath='saved_model3.hdf5')
-
-#net.load_weights('saved_model3.hdf5')
-#embedding_model.save_weights(filepath='saved_model3x.hdf5')
+#net.load_weights('checkpoints/weights-0120.hdf5')
 
 
 # ## Train network, or load pre-trained model
@@ -285,7 +280,7 @@ else:
 # In[ ]:
 
 
-#embedding_model.save_weights(filepath='saved_model2.hdf5')
+#embedding_model.save_weights(filepath='saved_model.hdf5')
 
 
 # ## Compute training set tile features on final/trained network. Use tile features to compute training set image distances using two methods. Report mean self-similarity rank on training set (lower is better)
