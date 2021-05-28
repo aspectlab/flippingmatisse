@@ -241,11 +241,12 @@ with strategy.scope():
     net.compile(loss=triplet_loss, optimizer='adam')
 
 
-# ## Optionally load from a checkpoint, for example to resume training
+# ## Optionally load from a checkpoint, for example to resume training, or from another pre-trained model
 
 # In[ ]:
 
 
+embedding_model.load_weights('asil20_weights.hdf5')
 #net.load_weights('checkpoints/weights-0120.hdf5')
 
 
