@@ -2,7 +2,7 @@
 
 This folder contains more recent code that performs inter-editions flips in the Matisse lithograph dataset, and also includes clustering code.
 
-After follow previous steps in main repository, run these scripts in succession --<br>
+After following previous steps in root directory of repository, run these scripts in succession --<br>
 do_intra_edition_flips<br>
 find_inter_edition_flips<br>
 [optional] final_mosaics + title<br>
