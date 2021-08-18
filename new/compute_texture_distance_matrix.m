@@ -11,7 +11,7 @@ num=size(D,1);
 D2=zeros(num/4);
 for i=1:num/4
     for j=1:num/4
-        D2(i,j)=mean(D(sub2ind([num num],4*(i-1)+(1:4),4*(j-1)+(1:4))));
+        D2(i,j)=sqrt(sum(D(sub2ind([num num],4*(i-1)+(1:4),4*(j-1)+(1:4))).^2));
     end
 end
 
