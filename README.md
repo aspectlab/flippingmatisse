@@ -4,8 +4,7 @@ This code repository contains all the code used in the published work --
 
 K.M. Aguilar, S. Powers, L. Lackey, A. Grootveld, and A.G. Klein, “Assessing paper texture similarity in Matisse lithographs using a triplet neural network,” in <i>Proc. IEEE MIT Undergraduate Research Tech. Conf. (URTC)</i>, Oct. 2021.
 
-
-This code repository contains experimental code used to determine possible "flips" in the Matisse lithograph dataset.  It does *not* contain the required image data referenced in step 2.  
+This code is for determining possible "flips" in the Matisse lithograph dataset.  It does *not* contain the required image data referenced in step 2.  
 
 ## Initial setup
 1. First, clone this git repository.
