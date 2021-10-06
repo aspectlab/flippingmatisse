@@ -1,5 +1,10 @@
 # flippingmatisse
 
+This code repository contains all the code used in the published work --
+
+K.M. Aguilar, S. Powers, L. Lackey, A. Grootveld, and A.G. Klein, “Assessing paper texture similarity in Matisse lithographs using a triplet neural network,” in <i>Proc. IEEE MIT Undergraduate Research Tech. Conf. (URTC)</i>, Oct. 2021.
+
+
 This code repository contains experimental code used to determine possible "flips" in the Matisse lithograph dataset.  It does *not* contain the required image data referenced in step 2.  
 
 ## Initial setup
@@ -26,4 +31,3 @@ Then, you can batch generate image mosiacs comparing original/flipped versions b
 `make_mosaics('data/matisse_grey/', 'mosaics/', fnames, uniqueEds, editions, flip)`<br>
 and the results will be stored as PNG images in the `mosaics/` directory.  Also, the input directory `data/matisse_grey/` can be replaced by a different directory containing color PNG image files.
 
-Authors: L. Lackey, A. Grootveld, K. Aguilar, A.G. Klein
